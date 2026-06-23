@@ -25,21 +25,24 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         header {
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             width: 100%;
             border-bottom: 1px solid var(--border-color);
             background-color: #111827;
+            box-sizing: border-box;
         }
 
         h1 {
             margin: 0;
             letter-spacing: 4px;
             color: var(--accent);
-            font-size: 2.5rem;
+            font-size: 2rem;
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
         }
 
@@ -47,18 +50,18 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            max-width: 550px;
-            margin-top: 15px;
-            padding: 0 10px;
+            max-width: 450px;
+            margin-top: 10px;
+            padding: 0 5px;
             box-sizing: border-box;
         }
 
         .stat-box {
             background-color: var(--card-bg);
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
         .stat-value {
@@ -71,39 +74,41 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
-            max-width: 550px;
+            justify-content: flex-start;
+            padding: 15px;
+            max-width: 450px;
             width: 100%;
             box-sizing: border-box;
         }
 
         .jargon-hint {
             background-color: #1e1b4b;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 1.05rem;
-            margin-bottom: 20px;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
             border: 1px solid #6366f1;
             color: #e0e7ff;
             font-weight: 600;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .matrix {
             display: grid;
-            gap: 6px;
-            margin-bottom: 20px;
+            gap: 5px;
+            margin-bottom: 15px;
+            justify-content: center;
         }
 
         .cell {
-            width: 52px;
-            height: 52px;
+            width: 42px;
+            height: 42px;
             border: 2px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: bold;
             text-transform: uppercase;
             border-radius: 6px;
@@ -117,15 +122,15 @@
 
         .input-area {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             width: 100%;
             margin-bottom: 15px;
         }
 
         input {
             flex: 1;
-            padding: 14px;
-            font-size: 1.2rem;
+            padding: 12px;
+            font-size: 1.1rem;
             border: 2px solid var(--border-color);
             border-radius: 8px;
             background-color: var(--card-bg);
@@ -138,12 +143,11 @@
         input:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
         }
 
         button {
-            padding: 14px 28px;
-            font-size: 1.05rem;
+            padding: 12px 20px;
+            font-size: 0.95rem;
             font-weight: bold;
             background-color: var(--accent);
             color: #0f172a;
@@ -153,52 +157,44 @@
             transition: all 0.2s;
         }
 
-        button:hover { opacity: 0.9; transform: translateY(-1px); }
-
         .message {
             min-height: 25px;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
         }
 
         .meaning-card {
             background-color: #1e293b;
             border-left: 5px solid var(--accent);
-            padding: 15px;
+            padding: 12px;
             border-radius: 0 8px 8px 0;
             width: 100%;
             box-sizing: border-box;
-            margin-top: 10px;
+            margin-top: 5px;
             display: none;
-            animation: fadeIn 0.5s ease-in-out;
         }
 
         .meaning-title {
             font-weight: bold;
             color: var(--accent);
-            margin-bottom: 5px;
-            font-size: 1.1rem;
+            margin-bottom: 4px;
+            font-size: 1rem;
         }
 
         .meaning-text {
-            font-size: 0.95rem;
-            line-height: 1.5;
+            font-size: 0.85rem;
+            line-height: 1.4;
             color: #cbd5e1;
         }
 
         .next-btn {
             background-color: var(--correct);
             color: white;
-            margin-top: 15px;
+            margin-top: 12px;
             display: none;
             width: 100%;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -206,9 +202,9 @@
 
     <header>
         <h1>JARGIS</h1>
-        <small style="color: #94a3b8; letter-spacing: 1px;">sozluk.gov.tr Temelli Meslek Jargonları Oyunu</small>
+        <small style="color: #94a3b8; letter-spacing: 1px;">sozluk.gov.tr Temelli Jargon Oyunu</small>
         <div class="stats-bar">
-            <div class="stat-box">Kelime: <span id="levelInfo" class="stat-value">1 / 10</span></div>
+            <div class="stat-box">Seviye: <span id="levelInfo" class="stat-value">1 / 10</span></div>
             <div class="stat-box">Skor: <span id="scoreInfo" class="stat-value">0</span></div>
         </div>
     </header>
@@ -219,145 +215,145 @@
         <div class="matrix" id="matrix"></div>
 
         <div class="input-area" id="inputArea">
-            <input type="text" id="guessInput" placeholder="Tahmininizi yazın" autocomplete="off">
-            <button id="guessBtn">TAHMİN ET</button>
+            <input type="text" id="guessInput" placeholder="Tahmin yazın" autocomplete="off" inputmode="text">
+            <button id="guessBtn">GÖNDER</button>
         </div>
 
         <div class="message" id="message"></div>
 
         <div class="meaning-card" id="meaningCard">
             <div class="meaning-title" id="meaningTitle">KELİME VE ANLAMI</div>
-            <div class="meaning-text" id="meaningText">Kelimenin sözlükteki tanımı burada görünecek.</div>
+            <div class="meaning-text" id="meaningText">Sözlük tanımı.</div>
             <button class="next-btn" id="nextBtn">SONRAKİ KELİME ➔</button>
         </div>
     </div>
 
     <script>
-        // Kapsamlı Kelime Havuzu (sozluk.gov.tr verilerine göre derlenmiştir)
+        // Arındırılmış ve Tamamı 4, 5, 6, 7 Harfli Olan Kelime Havuzu
         const masterDictionary = {
             4: [
                 { word: "BURS", hint: "Eğitim", meaning: "Bir öğrencinin öğrenimini sürdürebilmesi için devletçe veya özel kuruluşlarca ayrılan aylık ödenek." },
                 { word: "İLAM", hint: "Hukuk", meaning: "Bir davanın mahkemece nasıl bir hükme bağlandığını gösteren resmi mühürlü belge." },
                 { word: "OROZ", hint: "Denizcilik", meaning: "Gemi demirlerindeki kilit mekanizması veya pencereleri açıp kapamaya yarayan mandal." },
                 { word: "AMFİ", hint: "Eğitim / Mimari", meaning: "Sıraları arkaya doğru basamaklı olarak yükselen derslik veya tiyatro salonu." },
-                { word: "SİT", hint: "Arkeoloji / Coğrafya", meaning: "Tarih öncesinden günümüze kadar gelen medeniyetlerin ürünü olup koruma altına alınmış alan veya yer." },
-                { word: "KOMA", hint: "Tıp", meaning: "Dış uyarılara karşı tepkinin, bilincin ve isteğe bağlı hareketlerin bütünüyle veya büyük ölçüde kaybolduğu derin bilinçsizlik durumu." },
+                { word: "SİT", hint: "Arkeoloji", meaning: "Tarih öncesinden günümüze kadar gelen medeniyetlerin ürünü olup koruma altına alınmış alan veya yer." },
+                { word: "KOMA", hint: "Tıp", meaning: "Dış uyarılara karşı tepkinin ve bilincin bütünüyle veya büyük ölçüde kaybolduğu derin bilinçsizlik durumu." },
                 { word: "BLOK", hint: "İnşaat / Madencilik", meaning: "Yapılarda kullanılmak üzere hazırlanmış büyük ve masif taş, beton veya mermer kütlesi." },
-                { word: "FAİZ", hint: "Ticaret / Ekonomi", meaning: "Kapitalist ekonomide, ödünç verilen paranın işletilmesi karşılığında alınan getiri, ürem." },
-                { word: "DEBİ", hint: "Coğrafya / Hidroloji", meaning: "Bir akarsuyun herhangi bir kesitinden bir saniyede geçen suyun metreküp cinsinden hacmi, akım." },
-                { word: "İPOTEK", hint: "Hukuk / Ticaret", meaning: "Bir borcun ödeneceğine güvence olarak, bir taşınmazın resmi makamlara rehin edilmesi işlemi." },
-                { word: "MİA", hint: "Tıp / Farmakoloji", meaning: "İlacın etki süresini veya bir maddenin kullanım ömrünü belirten miat kelimesinin kısaltılmış teknik kullanımı." },
-                { word: "RANT", hint: "Ekonomi", meaning: "Bir malın, mülkün ya da toprağın üretken kullanımı sonucunda elde edilen emeksiz gelir, getiri." },
+                { word: "FAİZ", hint: "Finans / Ekonomi", meaning: "Ödünç verilen paranın işletilmesi karşılığında alınan getiri, ürem." },
+                { word: "DEBİ", hint: "Coğrafya / Hidroloji", meaning: "Bir akarsuyun herhangi bir kesitinden bir saniyede geçen suyun metreküp cinsinden hacmi." },
+                { word: "RANT", hint: "Ekonomi", meaning: "Bir malın, mülkün ya da toprağın üretken kullanımı sonucunda elde edilen emeksiz gelir." },
                 { word: "STAJ", hint: "Eğitim / Meslek", meaning: "Herhangi bir meslek edinecek olan kimsenin geçirdiği adaylık ve pratik öğrenme dönemi." },
-                { word: "Yiv", hint: "Mekanik / Askeri", meaning: "Bir vidanın gövdesi veya bir ateşli silahın namlusunun içi boyunca açılmış olan helezoni oyuk." },
-                { word: "MİT", hint: "Sosyoloji / Antropoloji", meaning: "Geleneksel olarak aktarılan, evrenin ve insanın yaratılışını simgesel hikayelerle anlatan kutsal öykü." },
-                { word: "KOD", hint: "Bilişim", meaning: "Verilerin bilgisayar tarafından işlenebilmesini sağlayan simgeler dizgesi, programlama dili komutları." },
-                { word: "HİP", hint: "Anatomi / Tıp", meaning: "Kalça eklemi veya tıp jargonunda hipofiz/hipotalamus bölgelerine yönelik klinik kısaltma terimi." },
-                { word: "KLON", hint: "Biyoloji", meaning: "Tek bir atadan eşeysiz üreme yoluyla genetik olarak tıpatıp aynı üretilen hücre veya canlı topluluğu." },
-                { word: "AKİT", hint: "Hukuk", meaning: "İki veya daha çok kimse ya da kuruluş arasında yapılan, yasal bağlayıcılığı olan sözleşme, mukavele." },
+                { word: "AKİT", hint: "Hukuk", meaning: "İki veya daha çok kimse ya da kuruluş arasında yapılan, yasal bağlayıcılığı olan sözleşme." },
                 { word: "FOND", hint: "Mutfak / Gastronomi", meaning: "Yemeklerin, çorba ve sosların temelini oluşturan, et veya sebze sularından elde edilen yoğun lezzet sıvısı." },
-                { word: "DOZ", hint: "Tıp / Eczacılık", meaning: "Bir ilacın bir defada veya bir günde hastaya verilmesi gereken yasal ve tıbbi miktarı." },
+                { word: "DOZ", hint: "Tıp / Eczacılık", meaning: "Bir ilacın bir defada veya bir günde hastaya verilmesi gereken tıbbi miktarı." },
                 { word: "KURS", hint: "Eğitim", meaning: "Belirli bir konunun öğretilmesi amacıyla düzenlenen, ders saatleri sınırlı öğretim programı." },
-                { word: "NEMA", hint: "Finans / Ekonomi", meaning: "Faiz, kazanç, büyüme payı veya bir paranın işletilmesi sonucunda elde edilen dönemsel getiri." },
+                { word: "NEMA", hint: "Finans / Ekonomi", meaning: "Faiz, kazanç, büyüme payı veya bir paranın işletilmesi sonucunda elde edilen getiri." },
                 { word: "ÖZET", hint: "Edebiyat / Basın", meaning: "Bir yazı veya sözün anlamını daha az kelimeyle sunan, ana hatlarını içeren kısa biçimi." },
-                { word: "FİRE", hint: "Ticaret / Lojistik", meaning: "Bir malın taşınması, depolanması veya işlenmesi sırasında kuruma, dökülme gibi nedenlerle ağırlığında meydana gelen azalma." },
-                { word: "FİLİ", hint: "Matbaacılık", meaning: "Dizgide satırların birbirine eşit aralıkta olmasını sağlamak için araya konulan metal veya plastik parça." },
-                { word: "Grup", hint: "Kimya / Geometri", meaning: "Periyodik cetvelde benzer özellik gösteren dikey sütunlar veya ortak nitelikleri olan öğeler kümesi." },
-                { word: "SAPA", hint: "Denizcilik", meaning: "Rüzgâr almayan, rüzgâra kapalı olan korunaklı deniz alanı veya tekne bordası." },
+                { word: "FİRE", hint: "Ticaret / Lojistik", meaning: "Bir malın taşınması veya işlenmesi sırasında kuruma, dökülme gibi nedenlerle ağırlığında meydana gelen azalma." },
+                { word: "FİLİ", hint: "Matbaacılık", meaning: "Dizgide satırların birbirine eşit aralıkta olmasını sağlamak için araya konulan metal parça." },
                 { word: "POTA", hint: "Metalurji / Kimya", meaning: "Madenlerin eritildiği, yüksek sıcaklığa dayanıklı toprak, kilden veya metalden yapılmış kap." },
-                { word: "SÖVE", hint: "Mimari / İnşaat", meaning: "Kapı ve pencere kasalarının yerleştirildiği, duvar boşluğunun kenarlarına yapılan dekoratif veya taşıyıcı çerçeve." },
-                { word: "TORK", hint: "Fizik / Mekanik", meaning: "Bir kuvvetin döndürme momenti, miller veya motorlar üzerindeki dönme yönlü kuvvet etkisi." },
-                { word: "ASİL", hint: "Hukuk", meaning: "Bir davada vekili olan kişinin kendisi, davanın asıl tarafı veya hukuki işlemin doğrudan muhatabı." },
+                { word: "SÖVE", hint: "Mimari / İnşaat", meaning: "Kapı ve pencere kasalarının yerleştirildiği, duvar boşluğunun kenarlarına yapılan dekoratif çerçeve." },
+                { word: "TORK", hint: "Fizik / Mekanik", meaning: "Bir kuvvetin döndürme moments, miller veya motorlar üzerindeki dönme yönlü kuvvet etkisi." },
+                { word: "ASİL", hint: "Hukuk", meaning: "Bir davada vekili olan kişinin kendisi, davanın asıl tarafı." },
                 { word: "ŞASE", hint: "Otomotiv", meaning: "Motorlu kara taşıtlarının motor, kaporta ve diğer tüm mekanik aksamını üzerinde taşıyan ana çelik iskelet." },
                 { word: "AKOR", hint: "Müzik", meaning: "Aynı anda çıkarılan ve birbiriyle uyumlu olan üç veya daha fazla sesin oluşturduğu tını bütünlüğü." },
                 { word: "BANT", hint: "Sanayi / Lojistik", meaning: "Üretim tesislerinde ürünlerin montaj hatları boyunca taşınmasını sağlayan dönen sürekli kuşak." },
-                { word: "MODEM", hint: "Bilişim", meaning: "Bilgisayar verilerini telefon veya kablo hatlarından aktarmak için analog ve dijital sinyallere dönüştüren cihaz." },
                 { word: "DRAF", hint: "Denizcilik", meaning: "Bir geminin su altında kalan kısmının derinliği, geminin çektiği su miktarı (Draft)." },
-                { word: "KÜST", hint: "Tarım", meaning: "Yağı çıkarılmış tohumların geriye kalan posası, hayvan yemi olarak kullanılan küspe teriminin yerel/teknik hâli." },
+                { word: "KÜST", hint: "Tarım", meaning: "Yağı çıkarılmış tohumların geriye kalan posası, hayvan yemi olarak kullanılan küspe." },
                 { word: "HARÇ", hint: "İnşaat", meaning: "Duvar örmek veya sıva yapmak için kum, kireç, çimento ve suyun karıştırılmasıyla elde edilen malzeme." },
-                { word: "SPOT", hint: "Ticaret / Ekonomi", meaning: "Malların veya dövizlerin bedeli derhal ödenerek peşin alışverişle teslim alındığı serbest piyasa türü." }
+                { word: "SPOT", hint: "Ticaret / Ekonomi", meaning: "Malların veya dövizlerin bedeli derhal ödenerek peşin alışverişle teslim alındığı serbest piyasa türü." },
+                { word: "VİZA", hint: "Büro / Diplomasi", meaning: "Bir belgenin veya pasaportun yetkililerce incelenip onaylandığını gösteren imza veya mühür." },
+                { word: "KÜRE", hint: "Coğrafya / Geometri", meaning: "Bütün noktaları merkezden aynı uzaklıkta bulunan yuvarlak cisim, yer yuvarı." },
+                { word: "KRAK", hint: "Kimya / Petrol", meaning: "Yüksek sıcaklıkta büyük hidrokarbon moleküllerinin daha küçük parçalara ayrılması işlemi (Cracking)." },
+                { word: "ERZİ", hint: "Tarım / Jeoloji", meaning: "Yer kabuğunun aşınmasıyla ortaya çıkan tarıma elverişli katman veya toprak türü." },
+                { word: "DERS", hint: "Eğitim", meaning: "Öğretmenin öğrencilere belirli bir süre içinde verdiği bilgi ve öğrenim çalışması." },
+                { word: "BATI", hint: "Coğrafya", meaning: "Güneşin battığı yön, yön haritalarında ana yönlerden biri." },
+                { word: "YARI", hint: "Matematik", meaning: "Bir bütünün eşit olarak bölündüğü iki parçadan her biri, yüzde ellilik kısım." },
+                { word: "PLan", hint: "Mimari / Yönetim", meaning: "Bir yapının, bir şehrin veya bir işin gelecekte nasıl yapılacağını gösteren çizim veya program." },
+                { word: "CİRO", hint: "Ticaret / Bankacılık", meaning: "Bir ticari işletmenin belirli bir dönemdeki iş hacmi, toplam satış hasılatı." },
+                { word: "VADİ", hint: "Coğrafya", meaning: "İki dağ arasındaki, zamanla akarsuların aşındırmasıyla oluşmuş uzunlamasına derin çöküntü." }
             ],
             5: [
                 { word: "ANFOR", hint: "Arkeoloji", meaning: "Gövdesi geniş, dibi sivri, iki kulplu, zeytinyağı veya şarap taşımakta kullanılan pişmiş toprak antik kap." },
                 { word: "RAYİÇ", hint: "Ticaret / Finans", meaning: "Bir para biriminin veya malın piyasadaki geçerli olan cari satış değeri." },
                 { word: "LÜMEN", hint: "Tıp / Fizik", meaning: "Anatomide içi boş organların iç boşluğu; Fizikte ise ışık akısı birimi." },
                 { word: "EVRAK", hint: "Hukuk / Büro", meaning: "Resmi işlerde hukuki ispat niteliği taşıyan, yazılı belgelerin veya kâğıtların bütünü." },
-                { word: "SEDAN", hint: "Otomotiv", meaning: "En az dört oturma yeri, dört kapısı ve yolcu bölümünden ayrı, arkada bağımsız bir bagajı olan binek otomobil tipi." },
+                { word: "SEDAN", hint: "Otomotiv", meaning: "En az dört oturma yeri, dört kapısı ve yolcu bölümünden ayrı bagajı olan binek otomobil tipi." },
                 { word: "HÜKÜM", hint: "Hukuk", meaning: "Yargılama sonunda mahkemenin uyuşmazlığa ilişkin verdiği, yasal olarak bağlayıcı son karar." },
                 { word: "BİZUT", hint: "Camcılık / Sanat", meaning: "Cam veya ayna kenarlarının belirli bir açıyla eğimli olarak kesilmesi ve parlatılması işlemi." },
-                { word: "DİYOT", hint: "Elektronik", meaning: "Elektrik akımının yalnızca bir yönde akmasına izin veren, iki terminalli yarı iletken devre elemanı." },
-                { word: "BARYUM", hint: "Kimya / Tıp", meaning: "Gümüş beyazı renginde bir alkali toprak metal; tıp dünyasında sindirim sistemi röntgenlerinde kontrast madde olarak kullanılır." },
-                { word: "VİDALA", hint: "Dericilik", meaning: "Krom tuzlarıyla tabaklanmış, genellikle ayakkabı yapımında kullanılan dana veya sığır derisi." },
-                { word: "AMORT", hint: "Maliye / Finans", meaning: "Bir duran varlığın aşınma, yıpranma veya eskime payını ifade eden amortisman uygulamasının temel terimi." },
-                { word: "STRES", hint: "Psikoloji / Tıp", meaning: "Gerek fiziksel gerekse psikolojik sınırların zorlanması karşısında vücudun ve zihnin verdiği savunma tepkisi." },
+                { word: "DİYOT", hint: "Elektronik", meaning: "Elektrik akımının yalnızca bir yönde akmasına izin veren yarı iletken devre elemanı." },
+                { word: "BARYUM", hint: "Kimya / Tıp", meaning: "Sindirim sistemi röntgenlerinde kontrast madde olarak kullanılan alkali toprak metal." },
+                { word: "VİDALA", hint: "Dericilik", meaning: "Krom tuzlarıyla tabaklanmış, genellikle ayakkabı yapımında kullanılan dana derisi." },
+                { word: "AMORT", hint: "Maliye / Finans", meaning: "Bir duran varlığın aşınma, yıpranma veya eskime payını ifade eden amortisman terimi." },
+                { word: "STRES", hint: "Psikoloji / Tıp", meaning: "Fiziksel veya psikolojik sınırların zorlanması karşısında vücudun verdiği savunma tepkisi." },
                 { word: "ENZİM", hint: "Biyokimya", meaning: "Canlı hücrelerde üretilen ve biyokimyasal reaksiyonları hızlandıran organik biyolojik katalizör." },
                 { word: "FİDAN", hint: "Tarım / Ormancılık", meaning: "Başka bir yere dikilmek üzere hazırlanmış, kökleri genç ve gelişmekte olan ağaççık." },
-                { word: "ZABIT", hint: "Hukuk / Yönetim", meaning: "Meclis, mahkeme veya resmi kurullarda söylenen sözlerin aynen yazıya geçirilmesiyle oluşan resmi tutanak." },
+                { word: "ZABIT", hint: "Hukuk / Yönetim", meaning: "Meclis, mahkeme veya resmi kurullarda söylenen sözlerin aynen yazıya geçirilmesiyle oluşan tutanak." },
                 { word: "RADON", hint: "Kimya / Jeoloji", meaning: "Radyumun parçalanmasıyla oluşan, radyoaktif, renksiz ve kokusuz bir soygaz element." },
-                { word: "LOKAL", hint: "Tıp / Sosyal", meaning: "Tıpta vücudun sadece belirli bir bölgesini etkileyen (anestezi gibi); toplumsal hayatta ise bir derneğe ait yer." },
-                { word: "HİBRİT", hint: "Teknoloji / Botanik", meaning: "İki farklı kaynağın melezlenmesi; otomotivde hem elektrik hem benzin motorunun bir arada kullanılması." },
-                { word: "FORSA", hint: "Denizcilik / Tarih", meaning: "Eski zamanlarda savaş gemilerinde (kadırgalarda) kürek çekmeye mahkûm edilen savaş esiri veya köle." },
-                { word: "MİRAÇ", hint: "Haritacılık / İnşaat", meaning: "Arazi ölçümlerinde yükseklik farklarını bulmak için üzerine geometrik çizgiler çizilmiş nivo çıtası (Mira)." },
+                { word: "LOKAL", hint: "Tıp / Sosyal", meaning: "Tıpta vücudun sadece belirli bir bölgesini etkileyen; sosyal hayatta ise bir derneğe ait yer." },
+                { word: "HİBRİT", hint: "Teknoloji / Botanik", meaning: "İki farklı kaynağın melezlenmesi; otomotivde elektrik ve benzin motorunun bir arada kullanılması." },
+                { word: "FORSA", hint: "Denizcilik / Tarih", meaning: "Eski zamanlarda savaş gemilerinde (kadırgalarda) kürek çekmeye mahkûm edilen savaş esiri." },
+                { word: "MİRAÇ", hint: "Haritacılık / İnşaat", meaning: "Arazi ölçümlerinde yükseklik farklarını bulmak için kullanılan geometrik çizgili nivo çıtası (Mira)." },
                 { word: "AORTA", hint: "Anatomi / Tıp", meaning: "Kalbimizin sol karıncığından çıkan, vücuda temiz kanı dağıtan en büyük ana atardamar (Aort)." },
-                { word: "BÜTÇE", hint: "Ekonomi / Maliye", meaning: "Bir devletin, bir kurumun veya bir ailenin gelecekteki döneme ait gelir ve gider tahminlerini gösteren çizelge." },
+                { word: "BÜTÇE", hint: "Ekonomi / Maliye", meaning: "Bir kurumun veya bir ailenin gelecekteki döneme ait gelir ve gider tahminlerini gösteren çizelge." },
                 { word: "LİBRET", hint: "Sahne Sanatları", meaning: "Opera, operet veya bale gibi sahne eserlerinin sözlerinin yazılı olduğu metin kitapçığı (Libretto)." },
-                { word: "POLİP", hint: "Tıp / Deniz Biyolojisi", meaning: "Tıpta mukoza zarlarında gelişen saplı küçük tümör; biyolojide ise sölenterlerden omurgasız canlı türü." },
-                { word: "REFOR", hint: "Kimya / Petrol", meaning: "Ham petrolün damıtılması sırasında oktanı yükseltmek için uygulanan katalitik dönüştürme işlemi (Reforming)." },
-                { word: "SÜLÜS", hint: "Geleneksel Sanatlar", meaning: "Arap harfleriyle yazılan, hat sanatında en sık kullanılan, harflerin yuvarlak hatlı olduğu yazı türü." },
-                { word: "KASKO", hint: "Sigortacılık", meaning: "Kara taşıtlarının uğrayabileceği hasar, yanma veya çalınma gibi zararları güvence altına alan isteğe bağlı sigorta." },
-                { word: "VARİL", hint: "Ticaret / Lojistik", meaning: "Sıvı maddeleri depolamakta kullanılan, petrol piyasasında standart ölçü birimi (159 litre) kabul edilen silindirik kap." },
-                { word: "KOTAS", hint: "Ticaret / Ekonomi", meaning: "Üretici veya ithalatçılara getirilen dönemsel mal sınırlaması, kota uygulamasının bürokratik kökeni." },
+                { word: "POLİP", hint: "Tıp / Deniz Biyolojisi", meaning: "Tıpta mukoza zarlarında gelişen saplı küçük tümör; biyolojide ise sölenterlerden omurgasız canlı." },
+                { word: "REFOR", hint: "Kimya / Petrol", meaning: "Ham petrolün damıtılması sırasında oktanı yükseltmek için uygulanan katalitik dönüştürme işlemi." },
+                { word: "SÜLÜS", hint: "Geleneksel Sanatlar", meaning: "Arap harfleriyle yazılan, hat sanatında en sık kullanılan yuvarlak hatlı yazı türü." },
+                { word: "KASKO", hint: "Sigortacılık", meaning: "Kara taşıtlarının uğrayabileceği hasar, yanma veya çalınma gibi zararları güvence altına alan sigorta." },
+                { word: "VARİL", hint: "Ticaret / Lojistik", meaning: "Sıvı maddeleri depolamakta kullanılan, petrol piyasasında standart ölçü birimi (159 litre) kabul edilen kap." },
+                { word: "KOTAS", hint: "Ticaret / Ekonomi", meaning: "Üretici veya ithalatçılara getirilen dönemsel mal sınırlaması, kota uygulaması." },
                 { word: "TEŞRİ", hint: "Hukuk / Siyaset", meaning: "Yasama gücünü kullanarak kanun yapma, yasa çıkarma süreci ve faaliyeti." },
-                { word: "VİRAL", hint: "Bilişim / Tıp", meaning: "Tıpta virüslerle ilgili olan; bilişim dünyasında internette çok hızlı bir şekilde yayılan reklam veya içerik." },
-                { word: "MUKİM", hint: "Hukuk", meaning: "Belirli bir yerde sürekli olarak ikamet eden, oturan yasal kişi veya taraf." },
+                { word: "VİRAL", hint: "Bilişim / Tıp", meaning: "Tıpta virüslerle ilgili olan; bilişimde internette çok hızlı bir şekilde yayılan içerik veya reklam." },
+                { word: "MUKİM", hint: "Hukuk", meaning: "Belirli bir yerde sürekli olarak ikamet eden, oturan yasal kişi." },
                 { word: "TAKSİ", hint: "Havacılık", meaning: "Uçağın yerde kendi motor gücüyle kalkış pistine doğru veya apronda yavaşça hareket etmesi." },
                 { word: "KOLON", hint: "İnşaat / Anatomi", meaning: "İnşaatta tavanı taşıyan düşey dikme sütun; tıpta kalın bağırsağın büyük bir bölümü." },
                 { word: "LİKİT", hint: "Finans / Kimya", meaning: "Finansta nakit paraya çevrilmesi kolay olan varlıklar; kimyada ise sıvı maddeler." },
                 { word: "PROFO", hint: "Ticaret / Muhasebe", meaning: "Uluslararası ticarette teklif niteliği taşıyan ön fatura türü (Proforma)." },
                 { word: "KAGİR", hint: "İnşaat / Mimari", meaning: "Taş veya tuğladan yapılmış, ahşap olmayan dayanıklı bina veya yapı türü." },
-                { word: "FÜZYON", hint: "Fizik / Nükleer", meaning: "Hafif iki atom çekirdeğinin birleşerek daha ağır bir çekirdek oluşturması sonucu ortaya çıkan nükleer kaynaşma reaksiyonu." },
-                { word: "KADRO", hint: "Yönetim / Meslek", meaning: "Bir kurumda çalışan veya çalıştırılacak olan personelin görev, unvan ve sayısal dağılımını gösteren liste." },
-                { word: "PİKEL", hint: "Dericilik", meaning: "Postların tabaklanmaya hazır hale getirilmesi için asit ve tuzlarla yapılan asitleme/kireç giderme banyosu." }
+                { word: "FÜZYON", hint: "Fizik / Nükleer", meaning: "Hafif iki atom çekirdeğinin birleşerek daha ağır bir çekirdek oluşturması sonucu ortaya çıkan nükleer kaynaşma." },
+                { word: "KADRO", hint: "Yönetim / Meslek", meaning: "Bir kurumda çalışan personelin görev, unvan ve sayısal dağılımını gösteren liste." },
+                { word: "PİKEL", hint: "Dericilik", meaning: "Postların tabaklanmaya hazır hale getirilmesi için asit ve tuzlarla yapılan asitleme banyosu." }
             ],
             6: [
                 { word: "TAHKİM", hint: "Hukuk", meaning: "Uyuşmazlıkların resmi mahkemeler yerine tarafsız hakemler aracılığıyla çözülmesi yöntemi." },
                 { word: "BORDRO", hint: "Maliye / Muhasebe", meaning: "Çalışanlara ödenen ücretlerin tüm detay ve kesintilerini gösteren resmi hesap cetveli." },
                 { word: "BİYOPSİ", hint: "Tıp", meaning: "Tanı koymak amacıyla canlı dokudan mikroskop altında incelenmek üzere parça alınması." },
-                { word: "SENSÖR", hint: "Elektronik / Otomasyon", meaning: "Fiziksel ortamdaki değişiklikleri (ısı, ışık, basınç) algılayıp elektrik sinyaline dönüştüren algılayıcı." },
-                { word: "KÜRATÖ", hint: "Sanat / Müzecilik", meaning: "Müze, sergi veya arşivlerin yönetiminden, sergilenecek eserlerin seçilmesinden sorumlu uzman kişi (Küratör)." },
-                { word: "STETOS", hint: "Tıp / Sağlık", meaning: "Vücut içindeki (kalp, akciğer) sesleri dinlemeye yarayan tıbbi cihazın (Stetoskop) klinik jargondaki adı." },
+                { word: "SENSÖR", hint: "Elektronik / Otomasyon", meaning: "Fiziksel ortamdaki değişiklikleri algılayıp elektrik sinyaline dönüştüren algılayıcı." },
+                { word: "KÜRATÖ", hint: "Sanat / Müzecilik", meaning: "Müze veya sergilerin yönetiminden, sergilenecek eserlerin seçilmesinden sorumlu uzman kişi (Küratör)." },
+                { word: "STETOS", hint: "Tıp / Sağlık", meaning: "Vücut içindeki sesleri dinlemeye yarayan tıbbi cihazın (Stetoskop) klinik jargondaki adı." },
                 { word: "ENDEKS", hint: "Finans / İstatistik", meaning: "Ekonomik verilerin dönemsel değişimlerini ölçmek için kullanılan matematiksel gösterge." },
                 { word: "FİŞMAN", hint: "Denizcilik", meaning: "Balık ağlarının derinliğini veya teknenin su üstündeki konumunu ayarlayan şamandıra tertibatı." },
-                { word: "ENTÜBE", hint: "Tıp", meaning: "Solunum yetmezliği çeken bir hastanın nefes borusuna suni solunum cihazına bağlanması için tüp yerleştirilmesi işlemi." },
+                { word: "ENTÜBE", hint: "Tıp", meaning: "Solunum yetmezliği çeken bir hastanın nefes borusuna suni solunum cihazına bağlanması için tüp yerleştirilmesi." },
                 { word: "KAVELA", hint: "Marangozluk / Denizcilik", meaning: "İki ahşap parçayı birbirine sabitlemek için kullanılan silindirik küçük ahşap çivi veya kama." },
-                { word: "AMORTİ", hint: "Finans / Muhasebe", meaning: "Yatırılan paranın veya alınan duran varlığın zamanla kendini amorti etmesi süreci." },
-                { word: "BİLANÇ", hint: "Muhasebe", meaning: "Bir şirketin belirli bir tarihteki varlıklarını, borçlarını ve öz kaynak durumunu gösteren temel mali tablo (Bilanço)." },
-                { word: "REKTÖR", hint: "Eğitim / Üniversite", meaning: "Bir üniversitenin yönetiminden, eğitim ve idari işleyişinden sorumlu en üst düzey yönetici." },
-                { word: "BRİFİG", hint: "Yönetim / Basın", meaning: "Bir konuda yetkililere veya basın mensuplarına verilen kısa, öz ve bilgilendirici açıklama (Brifing)." },
-                { word: "ASETAT", hint: "Kimya / Kırtasiye", meaning: "Asetik asidin tuzu veya selülozun işlenmesiyle elde edilen, şeffaf dosya ve tepegözlerde kullanılan plastik yaprak." },
-                { word: "KARTEL", hint: "Ekonomi / Ticaret", meaning: "Aynı alanda faaliyet gösteren büyük firmaların piyasayı tekelleştirmek için aralarında yaptığı yasal olmayan gizli anlaşma." },
-                { word: "BÜVETİ", hint: "Kimya / Laboratuvar", meaning: "Sıvıların hacmini hassas ölçmek ve titrasyon işlemlerinde kullanmak üzere üretilmiş altı musluklu cam boru (Büret)." },
+                { word: "AMORTİ", hint: "Finans / Muhasebe", meaning: "Yatırılan paranın veya alınan duran varlığın zamanla kendini telafi etmesi süreci." },
+                { word: "BİLANÇ", hint: "Muhasebe", meaning: "Bir şirketin belirli bir tarihteki varlıklarını, borçlarını ve öz kaynak durumunu gösteren mali tablo (Bilanço)." },
+                { word: "REKTÖR", hint: "Eğitim / Üniversite", meaning: "Bir üniversitenin yönetiminden ve idari işleyişinden sorumlu en üst düzey yönetici." },
+                { word: "BRİFİG", hint: "Yönetim / Basın", meaning: "Bir konuda yetkililere veya basın mensuplarına verilen kısa ve bilgilendirici açıklama (Brifing)." },
+                { word: "ASETAT", hint: "Kimya / Kırtasiye", meaning: "Asetik asidin tuzu veya tepegözlerde kullanılan şeffaf plastik yaprak." },
+                { word: "KARTEL", hint: "Ekonomi / Ticaret", meaning: "Firmaların piyasayı tekelleştirmek için aralarında yaptığı yasal olmayan gizli anlaşma." },
+                { word: "BÜVETİ", hint: "Kimya / Laboratuvar", meaning: "Sıvıların hacmini hassas ölçmek için kullanılan altı musluklu cam boru (Büret)." },
                 { word: "ASALET", hint: "Hukuk / Büro", meaning: "Bir devlet memurluğuna adaylık dönemini başarıyla tamamlayıp asaleten atanma durumu." },
                 { word: "MATRİS", hint: "Matematik / Matbaacılık", meaning: "Matematikte sayılar tablosu; matbaacılıkta ise döküm yoluyla yazı kalıbı çıkarma düzeneği." },
-                { word: "FAKTÖR", hint: "Biyoloji / Matematik", meaning: "Bir sonucun ortaya çıkmasında rol oynayan etken veya biyolojide pıhtılaşmayı sağlayan proteinler." },
-                { word: "LEJYON", hint: "Askeri / Tarih", meaning: "Antik Roma'da ana piyade birliği veya günümüzde yabancı askerlerden kurulan özel askeri birlik." },
-                { word: "DEKONT", hint: "Finans / Bankacılık", meaning: "Yapılan bir para transferinin veya bankacılık işleminin gerçekleştiğini kanıtlayan resmi hesap belgesi." },
-                { word: "KARKAS", hint: "İnşaat / Hayvancılık", meaning: "İnşaatta betonarme taşıyıcı iskelet; kasaplıkta ise kesilmiş hayvanın içi temizlenmiş bütün gövdesi." },
-                { word: "SÜBLİM", hint: "Kimya", meaning: "Bir katının sıvı hale geçmeden doğrudan gaz haline dönüşmesi olayı, süblimleşme teriminin eski/teknik adı." },
-                { word: "AGORAS", hint: "Arkeoloji", meaning: "Antik Yunan kentlerinde siyasi, ticari ve dini faaliyetlerin toplandığı meydan halk alanı (Agora)." },
+                { word: "FAKTÖR", hint: "Biyoloji / Matematik", meaning: "Bir sonucun ortaya çıkmasında rol oynayan etken veya pıhtılaşmayı sağlayan proteinler." },
+                { word: "LEJYON", hint: "Askeri / Tarih", meaning: "Antik Roma'da ana piyade birliği veya yabancı askerlerden kurulan özel askeri birlik." },
+                { word: "DEKONT", hint: "Finans / Bankacılık", meaning: "Yapılan bir para transferinin gerçekleştiğini kanıtlayan resmi bankacılık hesap belgesi." },
+                { word: "KARKAS", hint: "İnşaat / Hayvancılık", meaning: "İnşaatta betonarme taşıyıcı iskelet; kasaplıkta ise kesilmiş hayvanın bütün gövdesi." },
+                { word: "SÜBLİM", hint: "Kimya", meaning: "Bir katının sıvı hale geçmeden doğrudan gaz haline dönüşmesi olayı, süblimleşme." },
+                { word: "AGORAS", hint: "Arkeoloji", meaning: "Antik Yunan kentlerinde siyasi, ticari ve dini faaliyetlerin toplandığı meydan (Agora)." },
                 { word: "LİKİTE", hint: "Finans", meaning: "Bir varlığın değer kaybetmeden en hızlı biçimde nakit paraya dönüştürülebilme yeteneği (Likidite)." },
-                { word: "TEŞHİS", hint: "Tıp", meaning: "Bir hastalığın ne olduğunu hastanın şikayetleri ve klinik bulgular doğrultusunda belirleme, tanı koyma." },
-                { word: "MÜSVED", hint: "Yazın / Büro", meaning: "Üzerinde düzeltmeler yapılmak amacıyla yazılan, henüz resmiyet kazanmamış taslak kâğıt (Müsvedde)." },
-                { word: "İNDEKS", hint: "Bilişim / Yayıncılık", meaning: "Bilişimde verilere hızlı erişim sağlayan dizin yapısı; kitaplarda ise arama dizini." },
-                { word: "PLAZMA", hint: "Fizik / Tıp", meaning: "Fizikte gazın iyonize olmuş dördüncü hali; tıpta ise kanın hücrelerinden ayrıştırılmış sıvı kısmı." },
-                { word: "FİKSTÜ", hint: "Spor / Yayıncılık", meaning: "Spor müsabakalarında karşılaşacak takımların maç takvimini ve sırasını gösteren çizelge (Fikstür)." },
-                { word: "KADAST", hint: "Hukuk / Coğrafya", meaning: "Ülkedeki her çeşit arazi ve mülk yerinin sınırlarını ve değerlerini belirleyip plana bağlama işi (Kadastro)." },
+                { word: "TEŞHİS", hint: "Tıp", meaning: "Bir hastalığın ne olduğunu klinik bulgular doğrultusunda belirleme, tanı koyma." },
+                { word: "MÜSVED", hint: "Yazın / Büro", meaning: "Üzerinde düzeltmeler yapılmak amacıyla yazılan resmiyet kazanmamış taslak kâğıt (Müsvedde)." },
+                { word: "İNDEKS", hint: "Bilişim / Yayıncılık", meaning: "Bilişimde verilere hızlı erişim sağlayan dizin yapısı; kitaplarda arama dizini." },
+                { word: "PLAZMA", hint: "Fizik / Tıp", meaning: "Fizikte gazın iyonize olmuş dördüncü hali; tıpta kanın hücrelerinden ayrıştırılmış sıvı kısmı." },
+                { word: "FİKSTÜ", hint: "Spor / Yayıncılık", meaning: "Spor müsabakalarında karşılaşacak takımların maç takvimini gösteren çizelge (Fikstür)." },
+                { word: "KADAST", hint: "Hukuk / Coğrafya", meaning: "Ülkedeki her çeşit arazi ve mülk yerinin sınırlarını belirleyip plana bağlama işi (Kadastro)." },
                 { word: "DEFANS", hint: "Spor / Askeri", meaning: "Bir takımı veya bölgeyi rakip saldırılara karşı koruma amacıyla yapılan savunma düzeni." },
-                { word: "KÜVETİ", hint: "Laboratuvar / Kimya", meaning: "Spektrofotometre cihazlarında sıvı örneklerin optik ölçümünü yapmak için kullanılan küçük cam veya plastik tüp (Küvet)." },
+                { word: "KÜVETİ", hint: "Laboratuvar / Kimya", meaning: "Spektrofotometre cihazlarında sıvı örneklerin optik ölçümünü yapmak için kullanılan küçük tüp (Küvet)." },
                 { word: "GRAFİK", hint: "Matematik / Sanat", meaning: "Çizgiler, şemalar veya şekiller yardımıyla verilerin görsel olarak ifade edilmesi yöntemi." },
                 { word: "FLAMAN", hint: "Fizik / Elektrik", meaning: "Ampullerin içinde elektrik akımıyla akkor durumuna gelerek ışık yayan ince dirençli tel." },
-                { word: "İSTİNA", hint: "Hukuk", meaning: "İlk derece mahkemelerinin verdiği kararların, bir üst mahkeme tarafından yasal olarak yeniden incelenmesi yolu (İstinaf)." },
-                { word: "VARYAN", hint: "Biyoloji / Tıp", meaning: "Bir virüsün veya organizmanın mutasyon sonucu ortaya çıkan farklılaşmış yeni alt türü (Varyant)." },
+                { word: "İSTİNA", hint: "Hukuk", meaning: "İlk derece mahkemelerinin verdiği kararların, bir üst mahkeme tarafından yeniden incelenmesi yolu (İstinaf)." },
+                { word: "VARYAN", hint: "Biyoloji / Tıp", meaning: "Bir virüsün mutasyon sonucu ortaya çıkan farklılaşmış yeni alt türü (Varyant)." },
                 { word: "BOMBELE", hint: "Mekanik / Sanayi", meaning: "Metal veya cam yüzeylerin dışa doğru kavisli, şişkin hale getirilmesi işlemi (Bombeli)." },
                 { word: "REÇETE", hint: "Tıp / Eczacılık", meaning: "Hekimin hastası için gerekli gördüğü ilaçları ve kullanım şeklini üzerine yazdığı resmi belge." }
             ],
@@ -369,25 +365,25 @@
                 { word: "KÜRATÖR", hint: "Sanat / Müzecilik", meaning: "Sergileri düzenleyen, müze koleksiyonlarını yöneten ve sanatsal arşivlerden sorumlu olan uzman." },
                 { word: "BİLANÇO", hint: "Muhasebe / Finans", meaning: "Bir ticari kuruluşun belirli bir andaki varlık ve borç dengesini gösteren en temel mali tablo." },
                 { word: "STETOSK", hint: "Tıp / Sağlık", meaning: "Hekimlerin kalp ve akciğer seslerini dinlemek için kullandığı tıbbi muayene cihazı (Stetoskop)." },
-                { word: "EMPRİME", hint: "Tekstil", meaning: "Kumaş üzerine özel boyalar ve kalıplar kullanılarak renkli desenler basma işlemi veya bu şekilde basılmış kumaş." },
+                { word: "EMPRİME", hint: "Tekstil", meaning: "Kumaş üzerine özel boyalar ve kalıplar kullanılarak renkli desenler basma işlemi." },
                 { word: "MUKAVEL", hint: "Hukuk / Ticaret", meaning: "İki tarafın karşılıklı mutabakatla imzaladığı, yasal yükümlülük doğuran sözleşme (Mukavele)." },
-                { word: "REAKTÖR", hint: "Nükleer / Kimya", meaning: "Nükleer zincirleme reaksiyonların kontrollü olarak gerçekleştirildiği veya kimyasal dönüşümlerin yapıldığı büyük tesis ünitesi." },
-                { word: "ANESTEZ", hint: "Tıp / Cerrahi", meaning: "Ameliyat öncesinde hastanın ağrı duymasını engellemek amacıyla uygulanan tıbbi duyarsızlaştırma işlemi (Anestezi)." },
-                { word: "MÜEZZİN", hint: "Din Hizmetleri", meaning: "Camilerde namaz vaktinin geldiğini bildirmek üzere ezan okuyan ve ibadet düzenine yardımcı olan din görevlisi." },
-                { word: "KADASTRO", hint: "Hukuk / Haritacılık", meaning: "Ülke sınırları içindeki taşınmaz malların sınırlarını, alanlarını ve hukuki hak sahiplerini belirleyen resmi sistem." },
-                { word: "FAKTORİ", hint: "Finans / Ticaret", meaning: "Şirketlerin vadeli alacaklarını devrederek acil nakit ihtiyaçlarını karşıladıkları finansal yöntem (Faktoring)." },
+                { word: "REAKTÖR", hint: "Nükleer / Kimya", meaning: "Nükleer zincirleme reaksiyonların kontrollü olarak gerçekleştirildiği veya kimyasal dönüşümlerin yapıldığı tesis." },
+                { word: "ANESTEZ", hint: "Tıp / Cerrahi", meaning: "Ameliyat öncesinde hastanın ağrı duymasını engellemek amacıyla uygulanan tıbbi duyarsızlaştırma (Anestezi)." },
+                { word: "MÜEZZİN", hint: "Din Hizmetleri", meaning: "Camilerde namaz vaktinin geldiğini bildirmek üzere ezan okuyan din görevlisi." },
+                { word: "KADASTRO", hint: "Hukuk / Haritacılık", meaning: "Ülke sınırları içindeki taşınmaz malların sınırlarını ve yasal hak sahiplerini belirleyen resmi sistem." },
+                { word: "FAKTORİ", hint: "Finans / Ticaret", meaning: "Şirketlerin vadeli alacaklarını devrederek acil nakit ihtiyaçlarını karşıladıkları yöntem (Faktoring)." },
                 { word: "PROTOTİ", hint: "Mühendislik / Tasarım", meaning: "Seri üretime geçilmeden önce test edilmek amacıyla üretilen ilk model, özgün örnek (Prototip)." },
-                { word: "VARYANT", hint: "Tıp / Matematik", meaning: "Tıpta mutasyona uğramış virüs tipi; istatistikte ise bir değişkenin aldığı farklı değerlerden her biri." },
-                { word: "TUTANAK", hint: "Hukuk / Büro", meaning: "Meclis, mahkeme veya suç mahallinde durumu tespit etmek amacıyla yetkililerce imzalanan resmi yazı, zabıt." },
+                { word: "VARYANT", hint: "Tıp / İstatistik", meaning: "Tıpta mutasyona uğramış virüs tipi; istatistikte bir değişkenin aldığı farklı değerlerden her biri." },
+                { word: "TUTANAK", hint: "Hukuk / Büro", meaning: "Durumu tespit etmek amacıyla yetkililerce imzalanan resmi yazı, zabıt." },
                 { word: "FLAMANL", hint: "Elektrik / Sanayi", meaning: "Ampulün içinde ışık üreten akkor tel mekanizmasının teknik yapısı (Flamanlı)." },
-                { word: "TRİBÜNA", hint: "Hukuk / Tarih", meaning: "Antik Roma'da halkın haklarını koruyan yargıçlar kurulu veya günümüzde uluslararası özel mahkemeler (Tribunal)." },
+                { word: "TRİBÜNA", hint: "Hukuk / Tarih", meaning: "Antik Roma'da halkın haklarını koruyan yargıçlar kurulu veya uluslararası özel mahkemeler (Tribunal)." },
                 { word: "KAPSÜLE", hint: "Farmakoloji / Kimya", meaning: "İlaçların yutulmasını kolaylaştırmak için etken maddenin içine konulduğu eriyebilir küçük kılıf (Kapsül)." }
             ]
         };
 
-        // Oyun Planı: 3 adet 4 harfli, 3 adet 5 harfli, 3 adet 6 harfli, 1 adet 7 harfli
+        // Kurala Tam Uyan Sıralı Yapı (3x 4 Harfli, 3x 5 Harfli, 3x 6 Harfli, 1x 7 Harfli)
         const gameStructure = [4, 4, 4, 5, 5, 5, 6, 6, 6, 7];
-        let chosenWords = []; // Rastgele seçilen 10 kelime buraya dolacak
+        let chosenWords = []; 
 
         let currentLevel = 0;
         let currentScore = 0;
@@ -410,13 +406,12 @@
         const nextBtn = document.getElementById("nextBtn");
         const inputArea = document.getElementById("inputArea");
 
-        // Kelime havuzundan rastgele kelimeler seçen fonksiyon
         function buildGameSession() {
             chosenWords = [];
             gameStructure.forEach(length => {
                 const pool = masterDictionary[length];
-                // Havuzdan daha önce bu seansta seçilmemiş rastgele bir kelime seç
                 let randomWord;
+                // Aynı seansta aynı kelimenin iki kere gelmesini engelle
                 do {
                     randomWord = pool[Math.floor(Math.random() * pool.length)];
                 } while (chosenWords.includes(randomWord));
@@ -426,7 +421,7 @@
 
         function initGame() {
             if (currentLevel >= chosenWords.length) {
-                showMessage(`🎉 TEBRİKLER! Jargis Oyununu ${currentScore} Toplam Skorla Bitirdiniz!`, "#10b981");
+                showMessage(`🎉 TEBRİKLER! Jargis Oyununu ${currentScore} Skorla Bitirdiniz!`, "#10b981");
                 inputArea.style.display = "none";
                 meaningCard.style.display = "none";
                 jargonHintEl.innerText = "🏆 OYUN TAMAMLANDI";
@@ -440,7 +435,7 @@
             maxGuesses = wordLength; 
             currentRow = 0;
 
-            // Arayüz Güncellemeleri
+            // Mobil Arayüz Güncellemeleri
             levelInfoEl.innerText = `${currentLevel + 1} / ${chosenWords.length}`;
             scoreInfoEl.innerText = currentScore;
             jargonHintEl.innerText = `💡 Jargon: ${currentData.hint}`;
@@ -453,9 +448,9 @@
             meaningCard.style.display = "none";
             nextBtn.style.display = "none";
 
-            // Matris Kurulumu
+            // Matris Yapılandırması
             matrixEl.innerHTML = "";
-            matrixEl.style.gridTemplateColumns = `repeat(${wordLength}, 52px)`;
+            matrixEl.style.gridTemplateColumns = `repeat(${wordLength}, 42px)`;
             
             for (let i = 0; i < maxGuesses; i++) {
                 for (let j = 0; j < wordLength; j++) {
@@ -463,7 +458,6 @@
                     cell.classList.add("cell");
                     cell.setAttribute("id", `cell-${i}-${j}`);
                     
-                    // Lingo kuralı: İlk satırın ilk hücresine ilk harf yerleştirilir
                     if (i === 0 && j === 0) {
                         cell.innerText = targetWord[0];
                     }
@@ -493,7 +487,7 @@
 
             const states = Array(wordLength).fill("absent");
 
-            // 1. Aşama: Yeşiller (Doğru yer)
+            // Yeşiller
             for (let i = 0; i < wordLength; i++) {
                 if (guess[i] === targetWord[i]) {
                     states[i] = "correct";
@@ -501,7 +495,7 @@
                 }
             }
 
-            // 2. Aşama: Sarılar (Yanlış yer ama kelimede var)
+            // Sarılar
             for (let i = 0; i < wordLength; i++) {
                 if (states[i] !== "correct") {
                     if (targetLetterCounts[guess[i]] && targetLetterCounts[guess[i]] > 0) {
@@ -511,34 +505,33 @@
                 }
             }
 
-            // Renkleri hücrelere giydir
+            // Hücreleri Boya
             for (let i = 0; i < wordLength; i++) {
                 const cell = document.getElementById(`cell-${currentRow}-${i}`);
-                cell.innerText = guess[i];
-                cell.classList.add(states[i]);
+                if (cell) {
+                    cell.innerText = guess[i];
+                    cell.className = `cell ${states[i]}`;
+                }
             }
 
-            // KAZANMA DURUMU
             if (guess === targetWord) {
                 isLevelOver = true;
                 const pointsEarned = (maxGuesses - currentRow) * 10;
                 currentScore += pointsEarned;
                 scoreInfoEl.innerText = currentScore;
 
-                showMessage(`🎉 Harika! Kelimeyi Bildiniz (+${pointsEarned} Puan)`, "#10b981");
+                showMessage(`🎉 Harika! Doğru Tahmin (+${pointsEarned} Puan)`, "#10b981");
                 endLevel();
                 return;
             }
 
             currentRow++;
 
-            // KAYBETME DURUMU
             if (currentRow >= maxGuesses) {
                 isLevelOver = true;
-                showMessage(`😔 Hakkınız bitti! Doğru Kelime: ${targetWord}`, "#ef4444");
+                showMessage(`😔 Hak bitti! Doğru Kelime: ${targetWord}`, "#ef4444");
                 endLevel();
             } else {
-                // Sonraki satırın ilk hücresine ilk harfi ipucu olarak koy
                 const nextRowFirstCell = document.getElementById(`cell-${currentRow}-0`);
                 if (nextRowFirstCell) nextRowFirstCell.innerText = targetWord[0];
                 guessInput.value = "";
@@ -563,7 +556,6 @@
             messageEl.innerText = msg;
         }
 
-        // Event Listeners
         guessBtn.addEventListener("click", handleGuess);
         guessInput.addEventListener("keypress", (e) => {
             if (e.key === "Enter") handleGuess();
@@ -573,7 +565,6 @@
             initGame();
         });
 
-        // Oyunu ve kelime seansını başlat
         window.onload = () => {
             buildGameSession();
             initGame();
